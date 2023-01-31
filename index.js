@@ -10,7 +10,7 @@ function isPrime(number) {
 }
 
 function delimeters(number) {
-  const delimetArr = [];
+  let delimetArr = [];
   for (let i = number; i >= 1; i--) {
     if (number % i === 0) {
       delimetArr.push(i);
@@ -20,12 +20,12 @@ function delimeters(number) {
 }
 
 function validAnswer() {
-  const answer = prompt('Введите число');
+  let answer = prompt('Введите число');
 
   if (typeof Number(answer) === 'number') {
     if (parseFloat(answer) > 0 && parseFloat(answer) !== Infinity) {
       if (Number(answer) === parseFloat(answer)) {
-        const obj = {
+        let obj = {
           Number: Number(answer),
           Factorial: factorial(answer),
           Square: answer * answer,
@@ -36,7 +36,7 @@ function validAnswer() {
         console.log(JSON.stringify(obj).replace(/{"|"}|,"/gm, ' ').replace(/"|^ /gm, '').replace(/(\b) /gm, '\n'));
       }
     } else if (parseFloat(answer) === 0) {
-      const obj = {
+      let obj = {
         Number: answer,
         Factorial: 1,
         Square: answer,
@@ -56,3 +56,33 @@ function validAnswer() {
 }
 
 validAnswer();
+
+function matrix() {
+  let content = prompt('Введите символ');
+  let repeat = prompt('Введите число');
+
+  if (content.length >= 1 && content.length <= 3 && content !== '' && content !== ' ') {
+    if (typeof Number(repeat) === 'number' && repeat > 0 && repeat < 10 && Number(repeat) === parseFloat(repeat)) {
+      let result = [];
+      result.length = repeat;
+
+      for (let i = 0; i < result.length; i++) {
+        result[i] = [];
+        result[i].length = repeat;
+      }
+
+      for (let i = 0; i < result.length; i++) {
+        for (let j = 0; j < result[i].length; j++) {
+          result[i][j] = content;
+        }
+      }
+      console.log(result.join('\n').replace(/,/gm, ' '));
+    } else {
+      console.log('Incorrect input!');
+    }
+  } else {
+    console.log('Incorrect input!');
+  }
+}
+
+matrix();
