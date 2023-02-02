@@ -59,9 +59,9 @@ validAnswer();
 
 function matrix() {
   let content = prompt('Введите символ');
-  let repeat = prompt('Введите число');
 
   if (content.length >= 1 && content.length <= 3 && content !== '' && content !== ' ') {
+    let repeat = prompt('Введите число');
     if (typeof Number(repeat) === 'number' && repeat > 0 && repeat < 10 && Number(repeat) === parseFloat(repeat)) {
       let result = [];
       result.length = repeat;
@@ -79,9 +79,11 @@ function matrix() {
       console.log(result.join('\n').replace(/,/gm, ' '));
     } else {
       console.log('Incorrect input!');
+      matrix();
     }
   } else {
     console.log('Incorrect input!');
+    matrix();
   }
 }
 
