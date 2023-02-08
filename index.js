@@ -11,3 +11,11 @@ Array.prototype.customFilter = function (func, obj) {
   }
   return newArr;
 };
+
+function createDebounceFunction(callback, ms) {
+  let timer = setTimeout(callback, ms);
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(callback, ms);
+  };
+}
