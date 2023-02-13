@@ -48,3 +48,36 @@ class Calculator {
     }
   };
 }
+
+class RickAndMorty {
+  getCharacter(id) {
+    if (!id || typeof id !== 'number') {
+      throw new Error();
+    } else {
+      const character = fetch(`https://rickandmortyapi.com/api/character/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            console.log(null);
+          } else {
+            console.log(data);
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  }
+
+  async getEpisode(id) {
+    if (!id || typeof id !== 'number') {
+      throw new Error();
+    } else {
+      const episode = await fetch(`https://rickandmortyapi.com/api/episode/${id}`);
+      const response = await episode.json();
+      if (episode.status === 200) {
+        console.log(response);
+      } else {
+        console.log(null);
+      }
+    }
+  }
+}
