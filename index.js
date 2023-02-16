@@ -106,7 +106,7 @@ class LinkedList {
     if (current === null) {
       return array;
     }
-    array.push(current);
+    array.push(current.value);
     return this.toArray(current.next, array);
   }
 
@@ -174,7 +174,7 @@ class Car {
   }
 
   set yearOfManufacturing(value) {
-    if (typeof value === 'number' && value >= 1950 && value <= new Date().getFullYear()) {
+    if (typeof value === 'number' && value >= 1950 && value <= new Date().getFullYear() && value !== Infinity && !Number.isNaN(value)) {
       this._yearOfManufacturing = value;
     } else {
       throw new Error('Invalid year of manufacturing');
@@ -186,7 +186,7 @@ class Car {
   }
 
   set maxSpeed(value) {
-    if (typeof value === 'number' && value >= 100 && value <= 330) {
+    if (typeof value === 'number' && value >= 100 && value <= 330 && value !== Infinity && !Number.isNaN(value)) {
       this._maxSpeed = value;
     } else {
       throw new Error('Invalid max speed');
@@ -198,7 +198,7 @@ class Car {
   }
 
   set maxFuelVolume(value) {
-    if (typeof value === 'number' && value >= 20 && value <= 100) {
+    if (typeof value === 'number' && value >= 20 && value <= 100 && value !== Infinity && !Number.isNaN(value)) {
       this._maxFuelVolume = value;
     } else {
       throw new Error('Invalid max fuel volume');
@@ -222,7 +222,7 @@ class Car {
   }
 
   set damage(value) {
-    if (typeof value === 'number' && value >= 1 && value <= 5) {
+    if (typeof value === 'number' && value >= 1 && value <= 5 && value !== Infinity && value !== -Infinity && !Number.isNaN(value)) {
       this._damage = value;
     } else {
       throw new Error('Invalid damage');
@@ -276,10 +276,10 @@ class Car {
   }
 
   drive(speed, duration) {
-    if (typeof speed !== 'number' || speed <= 0) {
+    if (typeof speed !== 'number' || speed <= 0 || speed === Infinity || Number.isNaN(speed)) {
       throw new Error('Invalid speed');
     }
-    if (typeof duration !== 'number' || duration <= 0) {
+    if (typeof duration !== 'number' || duration <= 0 || duration === Infinity || Number.isNaN(duration)) {
       throw new Error('Invalid duration');
     }
     if (speed > this.maxSpeed) {
