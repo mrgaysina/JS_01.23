@@ -192,6 +192,19 @@ for (let i = 0; i < numbers.length; i += 1) {
       return;
     }
     if ((pressed === '0' || pressed === '00') && operand1 === '') return;
+
+    if (pressed === '.' && operand1 === '') {
+      operand1 += '0.';
+      screen[0].value = operand1;
+      return;
+    }
+
+    if (pressed === '.' && operand2 === '') {
+      operand2 += '0.';
+      screen[0].value = operand2;
+      return;
+    }
+
     if (operand2 === '' && operator === '') {
       operand1 += pressed;
       if (regex.test(String(operand1))) {
